@@ -60,7 +60,7 @@ def update_user(user_id):
     user[0]['password'] = request.args.get('password')
     return jsonify({'user': user[0]})
 
-@app.route('/todo/api/v1.0/tasks/<username>', methods=['DELETE'])
+@app.route('/todo/api/v1.0/users/<username>', methods=['DELETE'])
 def delete_user(username):
     user = [user for user in users if user['username'] == username]
     if len(user) == 0:
