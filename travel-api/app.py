@@ -40,9 +40,10 @@ def create_user():
         abort(400)
     user = {
         'id': users[-1]['id'] + 1,
-        'username': request.json.get('username'),
-        'email': request.json.get('email'),
-        'password': request.json.get('password'),
+        'username': request.args.get('username'),
+        'nama' : request.args.get('nama'),
+        'email': request.args.get('email'),
+        'password': request.args.get('password'),
     }
     users.append(user)
     return jsonify({'user': user}), 201
@@ -54,6 +55,7 @@ def update_user(user_id):
         abort(404)
 
     user[0]['username'] = request.args.get('username', user[0]['username']) 
+    user[0]['nama'] = request.args.get('nama', user[0]['nama'])  
     user[0]['email'] = request.args.get('email', user[0]['email'])   
     user[0]['password'] = request.args.get('password')
     return jsonify({'user': user[0]})
