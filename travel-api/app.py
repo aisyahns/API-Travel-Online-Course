@@ -319,6 +319,10 @@ def delete_pesanan(id_travel, id_kursi):
     if len(pesanan) == 0:
         abort(404)
     pesanans.remove(pesanan[0])
+    for kursi in kursis :
+        if kursi['id'] == id_kursi :
+            kursi['status'] == False
+    update_kursi_travel(int(id_travel))
     return jsonify({'result': True})
 
 if __name__ == '__main__':
