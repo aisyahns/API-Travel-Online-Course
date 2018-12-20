@@ -116,7 +116,7 @@ def create_travel():
         k = {
             'id' : i,
             'status' : False,
-            'id_travel' : travel['id']
+            'id_travel' : int(travel['id'])
         }
         kursi.append(k)
     kursis.append(kursi)
