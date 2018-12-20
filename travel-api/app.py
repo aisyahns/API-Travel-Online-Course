@@ -237,7 +237,7 @@ def get_kursi_all():
 def get_kursi_syarat(travel_id):
     kursi_list =[]
     for kursi in kursis :
-        if kursi['id_travel'] == travel_id :
+        if kursi['id_travel'] == int(travel_id) :
             kursi_list.append(kursi)
     if len(kursi_list) == 0:
         abort(404)
@@ -316,7 +316,7 @@ def create_pesanan():
     return jsonify({'pesanan': pesanan})
 
 @app.route('/travel/api/v1.0/pesanan/<int:id_travel>/<int:id_kursi>', methods=['DELETE'])
-def delete_pesanan(id_travel, id_kursi):
+def cancel_pesanan(id_travel, id_kursi):
     pesanan = [pesanan for pesanan in pesanans if ((pesanan['travel_id'] == id_travel) & (pesanan['kursi'] == id_kursi))]
     if len(pesanan) == 0:
         abort(404)
